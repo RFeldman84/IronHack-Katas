@@ -16,24 +16,22 @@
 
 
 //////// my solution: ////////
+function likes(arrayOfFans){ 
 
-function likes(arrayOfFans){ // <== array of fans is just a placeholder
-
-    if(!arrayOfFans) return `Pass the fans please!`;
     const fansCount = arrayOfFans.length;
   
-    if(!fansCount) return `no one likes this`
+    if(fansCount === 0) return "no one likes this"
     else if(fansCount === 1) return `${arrayOfFans[0]} likes this`
     else if(fansCount === 2) return `${arrayOfFans[0]} and ${arrayOfFans[1]} like this`
     else if(fansCount === 3) return `${arrayOfFans[0]}, ${arrayOfFans[1]} and ${arrayOfFans[2]} like this`
-    else if (fansCount > 3) return `${arrayOfFans[0]}, ${arrayOfFans[1]} and ${fansCount-2} other like this`
+    else if (fansCount > 3) return `${arrayOfFans[0]}, ${arrayOfFans[1]} and ${fansCount-2} others like this`
 }
   
   
   
 //////// the best solution: ////////
 
-function likes2(arrayOfFans){ // <== array of fans is just a placeholder
+function likes2(arrayOfFans){ 
 
     if(!arrayOfFans) return `Pass the fans please!`;
     const [first, second, third, ...theRest] = arrayOfFans;
@@ -56,6 +54,16 @@ function likes2(arrayOfFans){ // <== array of fans is just a placeholder
 
 const fans = ["erick", "humberto", "delio", "vero", "michel", "carlos"];
     
-// in function invocation (when we call the function) we pass the real array (which is the "fans" array)
-likes(fans)
-likes2(fans)
+
+//// top answer
+function likes(names) {
+    names = names || [];
+    switch(names.length){
+      case 0: return 'no one likes this'; break;
+      case 1: return names[0] + ' likes this'; break;
+      case 2: return names[0] + ' and ' + names[1] + ' like this'; break;
+      case 3: return names[0] + ', ' + names[1] + ' and ' + names[2] + ' like this'; break;
+      default: return names[0] + ', ' + names[1] + ' and ' + (names.length - 2) + ' others like this';
+    }
+  }
+  
